@@ -1,0 +1,1215 @@
+[
+  {
+    "id": "40e7fb9ad4c92126",
+    "type": "tab",
+    "label": "Desafios",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "1daddf86a083544e",
+    "type": "inject",
+    "z": "40e7fb9ad4c92126",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "5",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "0.01",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 160,
+    "y": 800,
+    "wires": [
+      [
+        "85c73378599bd0bd",
+        "a88f95fc7a995592"
+      ]
+    ]
+  },
+  {
+    "id": "85c73378599bd0bd",
+    "type": "http request",
+    "z": "40e7fb9ad4c92126",
+    "name": "http Brasil",
+    "method": "GET",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://api.openweathermap.org/data/2.5/weather?q=Brazil&units=metric&appid=51de9284e33080da9b95b16df80648c2",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 380,
+    "y": 700,
+    "wires": [
+      [
+        "0bb6cf593821ec92"
+      ]
+    ]
+  },
+  {
+    "id": "0bb6cf593821ec92",
+    "type": "json",
+    "z": "40e7fb9ad4c92126",
+    "name": "",
+    "property": "payload",
+    "action": "",
+    "pretty": false,
+    "x": 570,
+    "y": 700,
+    "wires": [
+      [
+        "37f96e7ea6962863",
+        "6fe5097cbae75880",
+        "0d39d8845d5c1d74",
+        "8d012d99ae3f418d",
+        "d8a7da57d3148437",
+        "7057441ba1ae54a9"
+      ]
+    ]
+  },
+  {
+    "id": "a88f95fc7a995592",
+    "type": "http request",
+    "z": "40e7fb9ad4c92126",
+    "name": "http Italia",
+    "method": "GET",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "http://api.openweathermap.org/data/2.5/weather?q=Italy&units=metric&appid=51de9284e33080da9b95b16df80648c2",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 380,
+    "y": 880,
+    "wires": [
+      [
+        "838eeb5475a75412"
+      ]
+    ]
+  },
+  {
+    "id": "838eeb5475a75412",
+    "type": "json",
+    "z": "40e7fb9ad4c92126",
+    "name": "",
+    "property": "payload",
+    "action": "",
+    "pretty": false,
+    "x": 570,
+    "y": 880,
+    "wires": [
+      [
+        "65ddc1e30803e1da",
+        "b1b78fda2789857a",
+        "1f26960297ba8cf7",
+        "f5ab0024627837c7",
+        "ab5ae5bffc81e76b",
+        "db3e69d1c44ef8bf"
+      ]
+    ]
+  },
+  {
+    "id": "b1b78fda2789857a",
+    "type": "change",
+    "z": "40e7fb9ad4c92126",
+    "name": "Temperatura Min",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "payload.main.temp_min",
+        "tot": "msg"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 810,
+    "y": 1040,
+    "wires": [
+      [
+        "0519f1f0e9da67da"
+      ]
+    ]
+  },
+  {
+    "id": "1f26960297ba8cf7",
+    "type": "change",
+    "z": "40e7fb9ad4c92126",
+    "name": "Temperatura Max",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "payload.main.temp_max",
+        "tot": "msg"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 810,
+    "y": 1080,
+    "wires": [
+      [
+        "8427885c9e9e6e69"
+      ]
+    ]
+  },
+  {
+    "id": "f5ab0024627837c7",
+    "type": "change",
+    "z": "40e7fb9ad4c92126",
+    "name": "Velocidade Do Vento",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "payload.wind.speed",
+        "tot": "msg"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 820,
+    "y": 1120,
+    "wires": [
+      [
+        "0e20c858ab23bc5a"
+      ]
+    ]
+  },
+  {
+    "id": "ab5ae5bffc81e76b",
+    "type": "change",
+    "z": "40e7fb9ad4c92126",
+    "name": "Humidade Relativa",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "payload.main.humidity",
+        "tot": "msg"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 810,
+    "y": 1160,
+    "wires": [
+      [
+        "34519e364088bb13"
+      ]
+    ]
+  },
+  {
+    "id": "db3e69d1c44ef8bf",
+    "type": "change",
+    "z": "40e7fb9ad4c92126",
+    "name": "Sensacao Termica",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "payload.main.feels_like",
+        "tot": "msg"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 810,
+    "y": 1200,
+    "wires": [
+      [
+        "ff0f0dee50fd858a"
+      ]
+    ]
+  },
+  {
+    "id": "5993a405846826b7",
+    "type": "ui_chart",
+    "z": "40e7fb9ad4c92126",
+    "name": "",
+    "group": "e46f822dfbe7a840",
+    "order": 3,
+    "width": 10,
+    "height": 6,
+    "label": "Temperatura Brasil / Italia",
+    "chartType": "line",
+    "legend": "false",
+    "xformat": "HH:mm:ss",
+    "interpolate": "linear",
+    "nodata": "",
+    "dot": false,
+    "ymin": "",
+    "ymax": "",
+    "removeOlder": 1,
+    "removeOlderPoints": "",
+    "removeOlderUnit": "3600",
+    "cutout": 0,
+    "useOneColor": false,
+    "useUTC": false,
+    "colors": [
+      "#1f77b4",
+      "#aec7e8",
+      "#ff7f0e",
+      "#2ca02c",
+      "#98df8a",
+      "#d62728",
+      "#ff9896",
+      "#9467bd",
+      "#c5b0d5"
+    ],
+    "outputs": 1,
+    "useDifferentColor": false,
+    "className": "",
+    "x": 1130,
+    "y": 780,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "37f96e7ea6962863",
+    "type": "function",
+    "z": "40e7fb9ad4c92126",
+    "name": "function 2",
+    "func": "msg.payload = msg.payload.main.temp;\nmsg.topic = \"Brasil\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 860,
+    "y": 700,
+    "wires": [
+      [
+        "5993a405846826b7"
+      ]
+    ]
+  },
+  {
+    "id": "65ddc1e30803e1da",
+    "type": "function",
+    "z": "40e7fb9ad4c92126",
+    "name": "function 3",
+    "func": "msg.payload = msg.payload.main.temp;\nmsg.topic = \"Italia\";\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 860,
+    "y": 880,
+    "wires": [
+      [
+        "5993a405846826b7"
+      ]
+    ]
+  },
+  {
+    "id": "8427885c9e9e6e69",
+    "type": "ui_gauge",
+    "z": "40e7fb9ad4c92126",
+    "name": "",
+    "group": "e46f822dfbe7a840",
+    "order": 12,
+    "width": 6,
+    "height": 4,
+    "gtype": "gage",
+    "title": "Temperatura Maxima ITALIA",
+    "label": "units",
+    "format": "{{value}}",
+    "min": 0,
+    "max": "100",
+    "colors": [
+      "#fbff00",
+      "#ff7b00",
+      "#d01b1b"
+    ],
+    "seg1": "",
+    "seg2": "",
+    "diff": false,
+    "className": "",
+    "x": 1160,
+    "y": 1080,
+    "wires": []
+  },
+  {
+    "id": "0519f1f0e9da67da",
+    "type": "ui_gauge",
+    "z": "40e7fb9ad4c92126",
+    "name": "",
+    "group": "e46f822dfbe7a840",
+    "order": 1,
+    "width": 6,
+    "height": 4,
+    "gtype": "gage",
+    "title": "Temperatura Minima ITALIA",
+    "label": "units",
+    "format": "{{value}}",
+    "min": 0,
+    "max": "100",
+    "colors": [
+      "#0ffbff",
+      "#122cf3",
+      "#593acb"
+    ],
+    "seg1": "",
+    "seg2": "",
+    "diff": false,
+    "className": "",
+    "x": 1160,
+    "y": 1040,
+    "wires": []
+  },
+  {
+    "id": "0e20c858ab23bc5a",
+    "type": "ui_text",
+    "z": "40e7fb9ad4c92126",
+    "group": "e46f822dfbe7a840",
+    "order": 27,
+    "width": 6,
+    "height": 1,
+    "name": "",
+    "label": "Velocidade Vento ITALIA",
+    "format": "{{msg.payload}}",
+    "layout": "row-spread",
+    "className": "",
+    "style": false,
+    "font": "",
+    "fontSize": 16,
+    "color": "#000000",
+    "x": 1150,
+    "y": 1120,
+    "wires": []
+  },
+  {
+    "id": "ff0f0dee50fd858a",
+    "type": "ui_text",
+    "z": "40e7fb9ad4c92126",
+    "group": "e46f822dfbe7a840",
+    "order": 21,
+    "width": 6,
+    "height": 1,
+    "name": "",
+    "label": "Sensacao Termica ITALIA",
+    "format": "{{msg.payload}}",
+    "layout": "row-spread",
+    "className": "",
+    "style": false,
+    "font": "",
+    "fontSize": 16,
+    "color": "#000000",
+    "x": 1150,
+    "y": 1200,
+    "wires": []
+  },
+  {
+    "id": "34519e364088bb13",
+    "type": "ui_text",
+    "z": "40e7fb9ad4c92126",
+    "group": "e46f822dfbe7a840",
+    "order": 24,
+    "width": 6,
+    "height": 1,
+    "name": "",
+    "label": "Humidade Relativa ITALIA",
+    "format": "{{msg.payload}}",
+    "layout": "row-spread",
+    "className": "",
+    "style": false,
+    "font": "",
+    "fontSize": 16,
+    "color": "#000000",
+    "x": 1160,
+    "y": 1160,
+    "wires": []
+  },
+  {
+    "id": "6fe5097cbae75880",
+    "type": "change",
+    "z": "40e7fb9ad4c92126",
+    "name": "Temperatura Min",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "payload.main.temp_min",
+        "tot": "msg"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 810,
+    "y": 340,
+    "wires": [
+      [
+        "f15917dbe37eb651"
+      ]
+    ]
+  },
+  {
+    "id": "0d39d8845d5c1d74",
+    "type": "change",
+    "z": "40e7fb9ad4c92126",
+    "name": "Temperatura Max",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "payload.main.temp_max",
+        "tot": "msg"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 810,
+    "y": 380,
+    "wires": [
+      [
+        "2a8960477a8834f0"
+      ]
+    ]
+  },
+  {
+    "id": "8d012d99ae3f418d",
+    "type": "change",
+    "z": "40e7fb9ad4c92126",
+    "name": "Velocidade Do Vento",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "payload.wind.speed",
+        "tot": "msg"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 820,
+    "y": 420,
+    "wires": [
+      [
+        "2a8b02d6f168f7fe"
+      ]
+    ]
+  },
+  {
+    "id": "d8a7da57d3148437",
+    "type": "change",
+    "z": "40e7fb9ad4c92126",
+    "name": "Humidade Relativa",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "payload.main.humidity",
+        "tot": "msg"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 810,
+    "y": 460,
+    "wires": [
+      [
+        "b4cd2c14c2c95913"
+      ]
+    ]
+  },
+  {
+    "id": "7057441ba1ae54a9",
+    "type": "change",
+    "z": "40e7fb9ad4c92126",
+    "name": "Sensacao Termica",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "payload.main.feels_like",
+        "tot": "msg"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 810,
+    "y": 500,
+    "wires": [
+      [
+        "f0c384fb1118a2e9"
+      ]
+    ]
+  },
+  {
+    "id": "2a8960477a8834f0",
+    "type": "ui_gauge",
+    "z": "40e7fb9ad4c92126",
+    "name": "",
+    "group": "e46f822dfbe7a840",
+    "order": 15,
+    "width": 6,
+    "height": 4,
+    "gtype": "gage",
+    "title": "Temperatura Maxima BRASIL",
+    "label": "units",
+    "format": "{{value}}",
+    "min": 0,
+    "max": "100",
+    "colors": [
+      "#fbff00",
+      "#ff7b00",
+      "#d01b1b"
+    ],
+    "seg1": "",
+    "seg2": "",
+    "diff": false,
+    "className": "",
+    "x": 1170,
+    "y": 380,
+    "wires": []
+  },
+  {
+    "id": "f15917dbe37eb651",
+    "type": "ui_gauge",
+    "z": "40e7fb9ad4c92126",
+    "name": "",
+    "group": "e46f822dfbe7a840",
+    "order": 5,
+    "width": 6,
+    "height": 4,
+    "gtype": "gage",
+    "title": "Temperatura minima BRASIL",
+    "label": "units",
+    "format": "{{value}}",
+    "min": 0,
+    "max": "100",
+    "colors": [
+      "#0ffbff",
+      "#122cf3",
+      "#593acb"
+    ],
+    "seg1": "",
+    "seg2": "",
+    "diff": false,
+    "className": "",
+    "x": 1160,
+    "y": 340,
+    "wires": []
+  },
+  {
+    "id": "2a8b02d6f168f7fe",
+    "type": "ui_text",
+    "z": "40e7fb9ad4c92126",
+    "group": "e46f822dfbe7a840",
+    "order": 29,
+    "width": 6,
+    "height": 1,
+    "name": "",
+    "label": "Velocidade do vento BRASIL",
+    "format": "{{msg.payload}}",
+    "layout": "row-spread",
+    "className": "",
+    "style": false,
+    "font": "",
+    "fontSize": 16,
+    "color": "#000000",
+    "x": 1160,
+    "y": 420,
+    "wires": []
+  },
+  {
+    "id": "f0c384fb1118a2e9",
+    "type": "ui_text",
+    "z": "40e7fb9ad4c92126",
+    "group": "e46f822dfbe7a840",
+    "order": 23,
+    "width": 6,
+    "height": 1,
+    "name": "",
+    "label": "Sensacao Termica BRASIL",
+    "format": "{{msg.payload}}",
+    "layout": "row-spread",
+    "className": "",
+    "style": false,
+    "font": "",
+    "fontSize": 16,
+    "color": "#000000",
+    "x": 1160,
+    "y": 500,
+    "wires": []
+  },
+  {
+    "id": "b4cd2c14c2c95913",
+    "type": "ui_text",
+    "z": "40e7fb9ad4c92126",
+    "group": "e46f822dfbe7a840",
+    "order": 26,
+    "width": 6,
+    "height": 1,
+    "name": "",
+    "label": "Humidade Relativa BRASIL",
+    "format": "{{msg.payload}}",
+    "layout": "row-spread",
+    "className": "",
+    "style": false,
+    "font": "",
+    "fontSize": 16,
+    "color": "#000000",
+    "x": 1160,
+    "y": 460,
+    "wires": []
+  },
+  {
+    "id": "61b645f1c4127be2",
+    "type": "inject",
+    "z": "40e7fb9ad4c92126",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 220,
+    "y": 140,
+    "wires": [
+      [
+        "883d38197c40f795"
+      ]
+    ]
+  },
+  {
+    "id": "883d38197c40f795",
+    "type": "http request",
+    "z": "40e7fb9ad4c92126",
+    "name": "",
+    "method": "GET",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=51de9284e33080da9b95b16df80648c2",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "x": 410,
+    "y": 140,
+    "wires": [
+      [
+        "130d1094e071ea15"
+      ]
+    ]
+  },
+  {
+    "id": "89e64790b583cc34",
+    "type": "debug",
+    "z": "40e7fb9ad4c92126",
+    "name": "debug 1",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "jsonata",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1110,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "130d1094e071ea15",
+    "type": "json",
+    "z": "40e7fb9ad4c92126",
+    "name": "",
+    "property": "payload",
+    "action": "",
+    "pretty": false,
+    "x": 590,
+    "y": 140,
+    "wires": [
+      [
+        "47ef3f2acb457e54",
+        "4341cd51ee5b8e7b"
+      ]
+    ]
+  },
+  {
+    "id": "4341cd51ee5b8e7b",
+    "type": "function",
+    "z": "40e7fb9ad4c92126",
+    "name": "function 1",
+    "func": "var temp = msg.payload.main.temp;\nvar temp_min = msg.payload.main.temp_min;\nvar temp_max = msg.payload.main.temp_max;\nvar wind_speed = msg.payload.wind.speed;\n\nmsg.payload = {\n    temperatura: temp,\n    temperatura_min: temp_min,\n    temperatura_max: temp_max,\n    velocidade_do_vento: wind_speed\n};\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 820,
+    "y": 180,
+    "wires": [
+      [
+        "b65e277d37ab4c8f"
+      ]
+    ]
+  },
+  {
+    "id": "47ef3f2acb457e54",
+    "type": "change",
+    "z": "40e7fb9ad4c92126",
+    "name": "Change Temp",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "payload.main.temp",
+        "tot": "msg"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 830,
+    "y": 60,
+    "wires": [
+      [
+        "89e64790b583cc34"
+      ]
+    ]
+  },
+  {
+    "id": "b65e277d37ab4c8f",
+    "type": "debug",
+    "z": "40e7fb9ad4c92126",
+    "name": "debug 2",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1120,
+    "y": 180,
+    "wires": []
+  },
+  {
+    "id": "192c9693041b1849",
+    "type": "inject",
+    "z": "40e7fb9ad4c92126",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "Cheguei",
+    "payloadType": "str",
+    "x": 200,
+    "y": 1320,
+    "wires": [
+      [
+        "1928541218f98347"
+      ]
+    ]
+  },
+  {
+    "id": "1928541218f98347",
+    "type": "mqtt out",
+    "z": "40e7fb9ad4c92126",
+    "name": "",
+    "topic": "enzoCarelli/teste",
+    "qos": "",
+    "retain": "",
+    "respTopic": "",
+    "contentType": "",
+    "userProps": "",
+    "correl": "",
+    "expiry": "",
+    "broker": "0f6c091f08d0f863",
+    "x": 490,
+    "y": 1320,
+    "wires": []
+  },
+  {
+    "id": "d9cfd372f44ab684",
+    "type": "mqtt in",
+    "z": "40e7fb9ad4c92126",
+    "name": "",
+    "topic": "enzoCarelli/teste",
+    "qos": "2",
+    "datatype": "auto-detect",
+    "broker": "0f6c091f08d0f863",
+    "nl": false,
+    "rap": true,
+    "rh": 0,
+    "inputs": 0,
+    "x": 220,
+    "y": 1400,
+    "wires": [
+      [
+        "85f696ba04d1ddf5"
+      ]
+    ]
+  },
+  {
+    "id": "85f696ba04d1ddf5",
+    "type": "debug",
+    "z": "40e7fb9ad4c92126",
+    "name": "debug 7",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 440,
+    "y": 1400,
+    "wires": []
+  },
+  {
+    "id": "85170b0c33a37f88",
+    "type": "comment",
+    "z": "40e7fb9ad4c92126",
+    "name": "Desafio 4",
+    "info": "Ao tentar colocar \"#\" e \"=\" no nome do topico\nele recusa com a mensagem\ninvalid topic specified",
+    "x": 200,
+    "y": 1260,
+    "wires": []
+  },
+  {
+    "id": "4caefcf218d27ca2",
+    "type": "ui_spacer",
+    "z": "40e7fb9ad4c92126",
+    "name": "spacer",
+    "group": "badabc2d7d38d791",
+    "order": 1,
+    "width": 6,
+    "height": 1
+  },
+  {
+    "id": "0f6dea1b49c0821e",
+    "type": "ui_spacer",
+    "z": "40e7fb9ad4c92126",
+    "name": "spacer",
+    "group": "2b965f461f2122fc",
+    "order": 1,
+    "width": 1,
+    "height": 1
+  },
+  {
+    "id": "e9315bae724b5d35",
+    "type": "ui_spacer",
+    "z": "40e7fb9ad4c92126",
+    "name": "spacer",
+    "group": "e46f822dfbe7a840",
+    "order": 2,
+    "width": 1,
+    "height": 1
+  },
+  {
+    "id": "163ba7e97117499c",
+    "type": "ui_spacer",
+    "z": "40e7fb9ad4c92126",
+    "name": "spacer",
+    "group": "e46f822dfbe7a840",
+    "order": 4,
+    "width": 1,
+    "height": 1
+  },
+  {
+    "id": "220e3772303e2fee",
+    "type": "ui_spacer",
+    "z": "40e7fb9ad4c92126",
+    "name": "spacer",
+    "group": "e46f822dfbe7a840",
+    "order": 6,
+    "width": 1,
+    "height": 1
+  },
+  {
+    "id": "a61d90e1b2337c35",
+    "type": "ui_spacer",
+    "z": "40e7fb9ad4c92126",
+    "name": "spacer",
+    "group": "e46f822dfbe7a840",
+    "order": 7,
+    "width": 1,
+    "height": 1
+  },
+  {
+    "id": "f19be4a98430df7c",
+    "type": "ui_spacer",
+    "z": "40e7fb9ad4c92126",
+    "name": "spacer",
+    "group": "e46f822dfbe7a840",
+    "order": 8,
+    "width": 1,
+    "height": 1
+  },
+  {
+    "id": "349de993a7862df7",
+    "type": "ui_spacer",
+    "z": "40e7fb9ad4c92126",
+    "name": "spacer",
+    "group": "e46f822dfbe7a840",
+    "order": 9,
+    "width": 1,
+    "height": 1
+  },
+  {
+    "id": "cc71fe069ed98dc7",
+    "type": "ui_spacer",
+    "z": "40e7fb9ad4c92126",
+    "name": "spacer",
+    "group": "e46f822dfbe7a840",
+    "order": 10,
+    "width": 1,
+    "height": 1
+  },
+  {
+    "id": "c377cfe8e2ee8085",
+    "type": "ui_spacer",
+    "z": "40e7fb9ad4c92126",
+    "name": "spacer",
+    "group": "e46f822dfbe7a840",
+    "order": 11,
+    "width": 1,
+    "height": 1
+  },
+  {
+    "id": "29cd3b6bd6488ff7",
+    "type": "ui_spacer",
+    "z": "40e7fb9ad4c92126",
+    "name": "spacer",
+    "group": "e46f822dfbe7a840",
+    "order": 13,
+    "width": 1,
+    "height": 1
+  },
+  {
+    "id": "57c3be7182ce8ec4",
+    "type": "ui_spacer",
+    "z": "40e7fb9ad4c92126",
+    "name": "spacer",
+    "group": "e46f822dfbe7a840",
+    "order": 14,
+    "width": 1,
+    "height": 1
+  },
+  {
+    "id": "81490c71478fd9a2",
+    "type": "ui_spacer",
+    "z": "40e7fb9ad4c92126",
+    "name": "spacer",
+    "group": "e46f822dfbe7a840",
+    "order": 16,
+    "width": 1,
+    "height": 1
+  },
+  {
+    "id": "a1f77864031c2311",
+    "type": "ui_spacer",
+    "z": "40e7fb9ad4c92126",
+    "name": "spacer",
+    "group": "e46f822dfbe7a840",
+    "order": 17,
+    "width": 1,
+    "height": 1
+  },
+  {
+    "id": "6ce9e84f6e95c3e4",
+    "type": "ui_spacer",
+    "z": "40e7fb9ad4c92126",
+    "name": "spacer",
+    "group": "e46f822dfbe7a840",
+    "order": 18,
+    "width": 12,
+    "height": 1
+  },
+  {
+    "id": "0b078876f55e4453",
+    "type": "ui_spacer",
+    "z": "40e7fb9ad4c92126",
+    "name": "spacer",
+    "group": "e46f822dfbe7a840",
+    "order": 19,
+    "width": 12,
+    "height": 1
+  },
+  {
+    "id": "cc5441f42268eec8",
+    "type": "ui_spacer",
+    "z": "40e7fb9ad4c92126",
+    "name": "spacer",
+    "group": "e46f822dfbe7a840",
+    "order": 20,
+    "width": 24,
+    "height": 1
+  },
+  {
+    "id": "f8ddd2bacb7c0fc7",
+    "type": "ui_spacer",
+    "z": "40e7fb9ad4c92126",
+    "name": "spacer",
+    "group": "e46f822dfbe7a840",
+    "order": 22,
+    "width": 12,
+    "height": 1
+  },
+  {
+    "id": "6a3b651def07bff4",
+    "type": "ui_spacer",
+    "z": "40e7fb9ad4c92126",
+    "name": "spacer",
+    "group": "e46f822dfbe7a840",
+    "order": 25,
+    "width": 12,
+    "height": 1
+  },
+  {
+    "id": "719761404a407727",
+    "type": "ui_spacer",
+    "z": "40e7fb9ad4c92126",
+    "name": "spacer",
+    "group": "e46f822dfbe7a840",
+    "order": 28,
+    "width": 12,
+    "height": 1
+  },
+  {
+    "id": "e46f822dfbe7a840",
+    "type": "ui_group",
+    "name": "Default",
+    "tab": "a1b4ebe45a734321",
+    "order": 8,
+    "disp": true,
+    "width": 24,
+    "collapse": false,
+    "className": ""
+  },
+  {
+    "id": "0f6c091f08d0f863",
+    "type": "mqtt-broker",
+    "name": "",
+    "broker": "broker.hivemq.com",
+    "port": "1883",
+    "clientid": "",
+    "autoConnect": true,
+    "usetls": false,
+    "protocolVersion": "4",
+    "keepalive": "60",
+    "cleansession": true,
+    "birthTopic": "",
+    "birthQos": "0",
+    "birthRetain": "false",
+    "birthPayload": "",
+    "birthMsg": {},
+    "closeTopic": "",
+    "closeQos": "0",
+    "closeRetain": "false",
+    "closePayload": "",
+    "closeMsg": {},
+    "willTopic": "",
+    "willQos": "0",
+    "willRetain": "false",
+    "willPayload": "",
+    "willMsg": {},
+    "userProps": "",
+    "sessionExpiry": ""
+  },
+  {
+    "id": "a1b4ebe45a734321",
+    "type": "ui_tab",
+    "name": "Desafio",
+    "icon": "dashboard",
+    "order": 2,
+    "disabled": false,
+    "hidden": false
+  }
+]
